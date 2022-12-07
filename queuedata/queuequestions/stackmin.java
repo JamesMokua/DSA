@@ -1,78 +1,60 @@
 package queuedata.queuequestions;
 
-import recursion.recursion;
 
 public class stackmin {
     class Node {
         public int value;
         public Node next;
+
+        public Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
     }
 
-    public Node head;
-    public Node tail;
-    public int size;
+    Node top;
+    Node min;
 
-    public void createStack(int nodeValue) {
-        Node node = new Node();
-        node.next = null;
-        node.value = nodeValue;
-        head = node;
-        tail = node;
-        size = 1;
-        System.out.println("Stack created with value: " + nodeValue);
+    public void min() {
+        top = null;
+        min = null;
     }
 
     public void push(int value) {
 
-        if (head == null) {
-            System.out.println("Stack is empty!");
+        if (min == null) {
+            min = new Node(value, min);
+        } else if (min.value < value) {
+            min = new Node(min.value, min);
         } else {
-            Node newNode = new Node();
-            newNode.value = value;
-            newNode.next = head;
-            head = newNode;
-            size++;
+            min = new Node(value, min);
         }
+        top = new Node(value, top);
 
     }
-    public int pop(){
-        int result = head.value;
-        head = head.next;
-        size--;
+
+    public int pop() {
+        min = min.next;
+        int result = top.value;
+        top = top.next;
         return result;
 
     }
-    public int stackMin(){
-     
-    }
 
-    public void traversestack() {
-        if (head == null) {
-            System.out.println("Stack is empty");
-        } else {
-            Node tempNode = head;
-            for (int i = 0; i < size; i++) {
-                System.out.println(tempNode.value);
-                if (i < size - 1) {
-                    System.out.println("---");
-                }
-                tempNode = tempNode.next;
-            }
+    public int stackMin() {
+        return min.value;
 
-        }
     }
 
     public static void main(String[] args) {
         stackmin s = new stackmin();
-        s.createStack(5);
         s.push(6);
         s.push(7);
         s.push(8);
-        s.push(9);
-        // s.traversestack();
-        // s.pop();
-       int result = s.stackMin();
-       System.out.println(result);
+        s.push(2);
+        s.push(1);
+        s.pop();
+        System.out.println(s.stackMin());
        
 
     }
