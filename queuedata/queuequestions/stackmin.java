@@ -47,7 +47,7 @@ public class stackmin {
         s.push(6);
         s.push(7);
         s.push(8);
-        s.push(1);
+        s.push(1 );
         // s.traversestack();
         // s.pop();
        int result = s.min();
