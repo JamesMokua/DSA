@@ -239,6 +239,6 @@ public class AVLtree {
         avl.levelOrder();
         avl.delete(5);
         System.out.println();
-        avl.levelOrder();
+        avl.levelOrder(); 
     }
 }
