@@ -16,7 +16,7 @@ public class Stack {
     public Node bottom;
     public int size = 0;
 
-    public void Stack(int capacity) {
+    public void Stacks(int capacity) {
         this.capacity = capacity;
     }
 
@@ -77,7 +77,7 @@ public void pushSetOfStacks(int v){
         last.push(v);
     }else{
         Stack stack = new Stack();
-        stack.Stack(capacity);
+        stack.Stacks(capacity);
         stack.push(v);
         stacks.add(stack);
     }
@@ -132,7 +132,7 @@ public int popAt(int index){
 }
     public static void main(String[] args) {
        Stack s = new Stack();
-       s.Stack(3);
+       s.Stacks(3);
        s.pushSetOfStacks(1);
        s.pushSetOfStacks(2);
        s.pushSetOfStacks(3);
