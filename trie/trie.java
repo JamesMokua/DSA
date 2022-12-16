@@ -58,13 +58,54 @@ public class trie {
        }
        return currentNode.endOfString;
     }
+    // Delete a String in Trie 
+    private boolean delete(trieNode parentNode, String word, int index){
+      char ch = word.charAt(index);
+      trieNode currentNode = parentNode.children.get(ch);
+      boolean canThisNodeBeDeleted;
+     //case 1
+      if(currentNode.children.size() > 1){
+        delete(currentNode, word, index+1);
+        return false;
+      }
+      //case 2
+      if(index == word.length() -1){
+        if(currentNode.children.size()>=1){
+            currentNode.endOfString = false;
+            return false;
+        }else{
+            parentNode.children.remove(ch);
+            return true;
+        }
+      }
+      //case 3
+      if(currentNode.endOfString == true){
+        delete(currentNode, word, index+1);
+        return false;
+      }
+      //case 4
+      canThisNodeBeDeleted = delete(currentNode, word, index+1);
+      if(canThisNodeBeDeleted == true){
+        parentNode.children.remove(ch);
+        return true;
+      }else{
+        return false;
+      }
+    }
 
+    public void delete(String word){
+        if(search(word) == true){
+            delete(root,word, 0);
+        }
+    }
     public static void main(String[] args) {
         trie t = new trie();
-        // t.insert("API");
+        t.insert("API");
         t.insert("APIS");
+        // t.search("API");
+        // t.search("APIS");
+        // t.search("John");
+        t.delete("API");
         t.search("API");
-        t.search("APIS");
-        t.search("John");
     }
 }
