@@ -3,7 +3,7 @@ package graphtraversal;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class breadthfirstsearch {
+public class breadthfirstsearchAM {
     public static class GraphNode {
         public String name;
         public int index;
@@ -18,7 +18,7 @@ public class breadthfirstsearch {
     ArrayList<GraphNode> nodeList = new ArrayList<GraphNode>();
     int[][] adjacencyMatrix;
 
-    public breadthfirstsearch(ArrayList<GraphNode> nodeList) {
+    public breadthfirstsearchAM(ArrayList<GraphNode> nodeList) {
         this.nodeList = nodeList;
         adjacencyMatrix = new int[nodeList.size()][nodeList.size()];
     }
@@ -92,7 +92,7 @@ public class breadthfirstsearch {
         nodeList.add(new GraphNode("C", 2));
         nodeList.add(new GraphNode("D", 3));
         nodeList.add(new GraphNode("E", 4));
-        breadthfirstsearch bfs = new breadthfirstsearch(nodeList);
+        breadthfirstsearchAM bfs = new breadthfirstsearchAM(nodeList);
         bfs.addUndirectedEdge(0, 1);
         bfs.addUndirectedEdge(0, 2);
         bfs.addUndirectedEdge(0, 3);
